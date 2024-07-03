@@ -85,12 +85,12 @@ const chart = new Chart(ctx, {
             y: {
                 title: {
                     display: true,
-                    text: 'Time (H:MM)'
+                    text: 'Time (H:MM:SS)'
                 },
                 ticks: {
                     stepSize: 30, // 30-minute intervals
                     callback: function (value) {
-                        return minutesToHMM(value);
+                        return minutesToHMMSS(value);
                     }
                 }
             }
@@ -112,13 +112,12 @@ const chart = new Chart(ctx, {
                 tooltip.innerHTML = `
                     <span class="pace">${minutesToMmss(pace)}/mi</span>
                     <table>
-                        <tr><th>5k</th><td>${minutesToHMM(times['5k'])}</td></tr>
-                        <tr><th>10k</th><td>${minutesToHMM(times['10k'])}</td></tr>
-                        <tr><th>Half</th><td>${minutesToHMM(times['Half'])}</td></tr>
-                        <tr><th>Full</th><td>${minutesToHMM(times['Full'])}</td></tr>
+                        <tr><th>5k</th><td>${minutesToHMMSS(times['5k'])}</td></tr>
+                        <tr><th>10k</th><td>${minutesToHMMSS(times['10k'])}</td></tr>
+                        <tr><th>Half</th><td>${minutesToHMMSS(times['Half'])}</td></tr>
+                        <tr><th>Full</th><td>${minutesToHMMSS(times['Full'])}</td></tr>
                     </table>
                 `;
-                tooltip.style.display = 'block';
             } else {
                 tooltip.style.display = 'none';
             }
